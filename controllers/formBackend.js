@@ -4,7 +4,7 @@ var fs = require('fs');
 var form = fs.readFileSync('form.html');
 var maxData =  2 * 1024 + 1024; // restricts POST request size to prevent against Denail of Service Attack, limit set here to 2mb
 
-var showFormGetData = function(request, response){
+module.exports = function(request, response){
   if(request.method === "POST"){
     var postData = '';
   request.on('data', function(chunk){
@@ -23,7 +23,7 @@ var showFormGetData = function(request, response){
     var postDataObject = querystring.parse(postData);
     var postDataObjectJson = JSON.stringify(postDataObject);
 
-    fs.writeFile('dataStore.json', postDataObjectJson, function (err) {
+    fs.writeFile(__dirname+'/../models/dataStore.json', postDataObjectJson, function (err) {
       if (err) return console.log(err);
       console.log('postData > dataStore.txt');
       })
@@ -37,5 +37,3 @@ var showFormGetData = function(request, response){
     response.end(form);
   }
 }
-
-module.exports = showFormGetData;
