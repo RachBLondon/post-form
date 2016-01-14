@@ -1,7 +1,8 @@
 var http = require('http');
 var querystring = require('querystring');
 var util = require('util');
-var form = require('fs').readFileSync('form.html');
+var fs = require('fs');
+var form = fs.readFileSync('form.html');
 var maxData =  2 * 1024 + 1024; // restricts POST request size to prevent against Denail of Service Attack, limit set here to 2mb
 
 http.createServer(function (request, response){
@@ -21,7 +22,12 @@ http.createServer(function (request, response){
     if(!postData) { response.end(); return;} //prevents empty post requests from crashing server
 
     var postDataObject = querystring.parse(postData);
-    console.log('User Posted:\n' + postData);
+    var postDataObjectJson = JSON.stringify(postDataObject);
+
+    fs.writeFile('dataStore.json', postDataObjectJson, function (err) {
+      if (err) return console.log(err);
+      console.log('postData > dataStore.txt');
+      })
     response.end('You Posted:\n' + util.inspect(postDataObject));
   });
 }
