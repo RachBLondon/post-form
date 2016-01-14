@@ -1,7 +1,7 @@
 var querystring = require('querystring');
 var util = require('util');
 var fs = require('fs');
-var form = fs.readFileSync('form.html');
+var form = fs.readFileSync(__dirname+'/../views/form.html');
 var maxData =  2 * 1024 + 1024; // restricts POST request size to prevent against Denail of Service Attack, limit set here to 2mb
 
 module.exports = function(request, response){
