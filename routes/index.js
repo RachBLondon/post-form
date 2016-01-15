@@ -2,7 +2,7 @@ var express = require('express');
 var router  = express.Router();
 var fs      = require("fs");
 var dataJSON = require(__dirname +"/../models/dataStore");
-var count = 0;
+var count = 4;
 
 console.log("dataJSON....", dataJSON);
 
@@ -15,15 +15,29 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/postForm',function (req, res){
-
-  var formData = req.body;
-  dataObject["person"+ count] = formData;
-  count ++;
-  console.log(count);
-  writeToDisk(JSON.stringify(dataObject));
+  writeToDisk(JSON.stringify(createNamePairObjects(getFromData(req,res))));
 });
 
+var getFromData = function (req, res){
+  var formData = req.body;
+  return formData;
+}
 
+var createNamePairObjects = function(formData){
+    var firstNames = formData.firstname;
+    var surnames = formData.surname;
+    console.log(firstNames);
+    console.log(surnames);
+
+    firstNames.map(function(firstname, i){
+        var person ={};
+        person.firstname = firstname;
+        person.surname = surnames[i];
+        dataObject["person"+count] = person;
+        count ++;
+    });
+    return dataObject;
+};
 
 var writeToDisk = function(data){
   fs.writeFile(__dirname+'/../models/dataStore.json', data, function (err) {
@@ -32,4 +46,4 @@ var writeToDisk = function(data){
   });
 };
 
-module.exports = router
+module.exports = router;
