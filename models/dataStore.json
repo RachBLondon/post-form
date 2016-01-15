@@ -1,1 +1,1 @@
-{"person0":{"firstname":"Leonard","surname":"Davies"},"person1":{"firstname":"Handy","surname":"Andy"},"person2":{"firstname":"Dawn","surname":"French"}}
+{"person0":{"firstname":"Leonard","surname":"Davies","people[][firstname]":["Sheldon","Raj","Howard","Penny"],"people[][surname]":["Cooper","Koothrapali","Wolowitz",""]}}
