@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "./node_modules/.bin/tape ./test/backendTest.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -15,6 +16,10 @@
     "querystring": "^0.2.0",
     "serve-favicon": "~2.3.0",
     "util": "^0.10.3"
-
+  },
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "shot": "^3.0.0",
+    "tape": "^4.4.0"
   }
 }
