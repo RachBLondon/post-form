@@ -9,15 +9,16 @@ router.get('/', function(req, res, next) {
 
 router.post('/postForm',function (req, res){
   var formData = JSON.stringify(req.body);
-
-  fs.writeFile(__dirname+'/../models/dataStore.json', formData, function (err) {
-    if (err) return console.log(err);
-    console.log('formData > dataStore.txt');
-    })
-
+  writeToDisk(formData);
 });
 
-module.exports = router;
 
 
-// people[][firstname]"
+var writeToDisk = function(data){
+  fs.writeFile(__dirname+'/../models/dataStore.json', data, function (err) {
+    if (err) return console.log(err);
+    console.log('formData > dataStore.txt');
+  });
+};
+
+module.exports = router
