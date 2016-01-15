@@ -11,19 +11,15 @@ var dataObject = new Object();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Form' });
 });
 
 router.post('/postForm',function (req, res){
 
   var formData = req.body;
   dataObject["person"+ count] = formData;
-  console.log("????",formData);
-  console.log("LLL",dataObject);
   count ++;
   console.log(count);
-
-
   writeToDisk(JSON.stringify(dataObject));
 });
 
