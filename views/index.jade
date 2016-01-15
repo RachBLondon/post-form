@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  html
+    body
+      .container
+        form(action='postForm', method='POST')
+          table.table
+            tr
+              th
+                h3 First name
+              th
+                h3 Last name
+            tr
+              td
+                input.form-control(type='text', name='people[][firstname]', value='Leonard')
+              td
+                input.form-control(type='text', name='people[][surname]', value='Hofstader')
+            tr
+              td
+                input.form-control(type='text', name='people[][firstname]', value='Sheldon')
+              td
+                input.form-control(type='text', name='people[][surname]', value='Cooper')
+            tr
+              td
+                input.form-control(type='text', name='people[][firstname]', value='Raj')
+              td
+                input.form-control(type='text', name='people[][surname]', value='Koothrapali')
+            tr
+              td
+                input.form-control(type='text', name='people[][firstname]', value='Howard')
+              td
+                input.form-control(type='text', name='people[][surname]', value='Wolowitz')
+            tr
+              td
+                input.form-control(type='text', name='people[][firstname]', value='Penny')
+              td
+                input.form-control(type='text', name='people[][surname]', value='')
+          input.btn.btn-primary.btn-lg.pull-right(type='submit', value='OK')
