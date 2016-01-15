@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/postForm',function (req, res){
   writeToDisk(JSON.stringify(createNamePairObjects(getFromData(req,res))));
+  res.render('thanks', {title: 'Thanks'});
 });
 
 var getFromData = function (req, res){
