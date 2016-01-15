@@ -1,15 +1,26 @@
 var express = require('express');
 var router  = express.Router();
 var fs      = require("fs");
+var dataJSON = require(__dirname +"/../models/dataStore");
+var count = 0;
+
+console.log("dataJSON....", dataJSON);
+
+
+var dataObject = new Object();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Form' });
 });
 
 router.post('/postForm',function (req, res){
-  var formData = JSON.stringify(req.body);
-  writeToDisk(formData);
+
+  var formData = req.body;
+  dataObject["person"+ count] = formData;
+  count ++;
+  console.log(count);
+  writeToDisk(JSON.stringify(dataObject));
 });
 
 
