@@ -27,3 +27,13 @@ function testUrl(url, statusCode){
     });
   });
 }
+
+
+test('Data is being collected from the from and sent to models/dataStore.js', function(t){
+  var dataFormFE = app.post.formData;
+  console.log("test>>>>",dataFormFE);
+  // var actual = app.SpecificTubeLine(body);
+  // var expected = data.expected;
+  t.Equal(actual, expected, 'test passed!');
+  t.end();
+});

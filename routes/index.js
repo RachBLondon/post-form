@@ -18,6 +18,3 @@ router.post('/postForm',function (req, res){
 });
 
 module.exports = router;
-
-
-// people[][firstname]"
