@@ -1,7 +1,11 @@
 # post-form
 
-Using Node.js with an express framework, and jade for the view, I have built a simple server to serve the from and store the data the dataStore.json file. 
-I have added some twitter bootstrap for basic styling.
+Using Node.js with an express framework, and jade for the views, I have built a simple server to serve the from and store the data the dataStore.json file. 
+I have added some twitter bootstrap for basic styling. I have unit tests to test the end points using `tape` and `shot`.  
+
+To start the application:
+`npm install` then `npm start`.
+To run the tests `npm run test`
 
 I have created a datastore object, which contains objects for each person with a unique ID, that contains the associated firstname and surname. This is then turned in to JSON and stored in the dataStore.json file. Additional names are added to this object.
 
